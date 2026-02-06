@@ -134,8 +134,13 @@ local function cleanup()
 end
 
 local function handle_event(data)
-  local event = vim.json.decode(data)
-  if not event then
+  local ok, event = pcall(vim.json.decode, data)
+  if not ok or not event then
+    return
+  end
+
+  -- Ignore events if cleanup has already occurred
+  if not state.job then
     return
   end
 
@@ -143,11 +148,20 @@ local function handle_event(data)
 
   if event_type == "message_update" then
     local delta = event.assistantMessageEvent
-    if delta and delta.type == "thinking_delta" then
-      update_spinner("Thinking...")
+    if delta then
+      if delta.type == "thinking_delta" then
+        update_spinner("Thinking...")
+      elseif delta.type == "error" then
+        stop_spinner()
+        cleanup()
+        local reason = delta.reason or "unknown"
+        vim.notify("pi error: " .. reason, vim.log.levels.ERROR)
+      end
     end
   elseif event_type == "tool_execution_start" then
     update_spinner("Running tool: " .. (event.toolName or "unknown"))
+  elseif event_type == "tool_execution_end" then
+    update_spinner("Thinking...")
   elseif event_type == "agent_end" then
     stop_spinner()
     cleanup()
@@ -213,7 +227,8 @@ function M.send(message, context)
     on_exit = function(_, exit_code)
       vim.schedule(function()
         stop_spinner()
-        if exit_code ~= 0 then
+        -- 143 = SIGTERM (128 + 15), normal termination from jobstop()
+        if exit_code ~= 0 and exit_code ~= 143 then
           vim.notify("pi exited with code " .. exit_code, vim.log.levels.ERROR)
         end
         state.job = nil
