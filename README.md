@@ -48,6 +48,8 @@ Run `pi --list-models` to see available options.
 
 ### Keymaps
 
+No keymaps by default. You choose.
+
 ```lua
 -- Ask pi with the current buffer as context
 vim.keymap.set("n", "<leader>ai", ":PiAsk<CR>", { desc = "Ask pi" })
