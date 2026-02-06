@@ -8,7 +8,7 @@ A Neovim plugin for interacting with [pi](https://pi.dev) - the minimal terminal
 </a>
 </p>
 
-It's funny that all AI plugins for Neovim are quite complex to interact with, like they want to imitate all current IDE features, while those are trending towards the simplicity of the CLI, which is the reason most users choose neovim in the first place. [pi.dev](https://pi.dev/) is the best example of this philosophy. It was the perfect candidate to integrate in neovim.
+It's funny that all AI plugins for Neovim are quite complex to interact with, like they want to imitate all current IDE features, while those are trending towards the simplicity of the CLI (which is the reason most users choose neovim in the first place). [pi.dev](https://pi.dev/) is the best example of this philosophy, and the perfect candidate to integrate in neovim.
 
 ## Features
 
