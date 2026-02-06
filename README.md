@@ -4,7 +4,7 @@ A Neovim plugin for interacting with [pi](https://pi.dev) - the minimal terminal
 
 [![asciicast](https://asciinema.org/a/k7XHTrbWKHp3dOAF.svg)](https://asciinema.org/a/k7XHTrbWKHp3dOAF)
 
-I found all AI plugins for Neovim too complicated, like they wanted to imitate the latest IDE features, with lots of windows and information. But some users just use neovim for its simplicity. I find it funny that most coding agents are trending towards the simplicity of the CLI, and [pi.dev](https://pi.dev/) is the perfect example of this philosophy. It was the perfect candidate to integrate in neovim.
+It's funny that all AI plugins for Neovim are quite complex to interact with, like they want to imitate all current IDE features, while those are trending towards the simplicity of the CLI, which is the reason most users choose neovim in the first place. [pi.dev](https://pi.dev/) is the best example of this philosophy. It was the perfect candidate to integrate in neovim.
 
 ## Features
 
