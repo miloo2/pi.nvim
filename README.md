@@ -2,6 +2,8 @@
 
 A Neovim plugin for interacting with [pi](https://pi.dev) - the minimal terminal coding agent.
 
+[![asciicast](https://asciinema.org/a/v5ixuqFHXZgmiHlD.svg)](https://asciinema.org/a/v5ixuqFHXZgmiHlD)
+
 I found all AI plugins for Neovim too complicated, like they wanted to imitate the latest IDE features, with lots of windows and information. But some users just use neovim for its simplicity. I find it funny that most coding agents are trending towards the simplicity of the CLI, and [pi.dev](https://pi.dev/) is the perfect example of this philosophy. It was the perfect candidate to integrate in neovim.
 
 ## Features
