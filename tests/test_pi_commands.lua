@@ -169,8 +169,8 @@ local function test_pi_ask_includes_system_prompt()
   local prompt = decode_prompt(captured)
 
   MiniTest.expect.equality(
-    prompt.message:match("You are a highly capable AI assistant"),
-    "You are a highly capable AI assistant"
+    prompt.message:match("You are running inside the pi.nvim"),
+    "You are running inside the pi.nvim"
   )
 end
 
