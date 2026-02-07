@@ -10,6 +10,9 @@ local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇",
 local SYSTEM_PROMPT =
   [[You are running inside the pi.nvim Neovim plugin. The user has sent a request and will not be able to reply back. You must complete the task immediately without asking any questions or requesting clarification. Take action now and do what was asked.]]
 
+local EMPTY_FILE_NOTE =
+  [[NOTE: This file is currently empty. Please create or populate it directly by applying the necessary edits so pi.nvim can write the file.]]
+
 local state = {
   job = nil,
   buf = nil,
@@ -19,6 +22,77 @@ local state = {
   ns_id = nil,
   extmark_id = nil,
 }
+
+local function buffer_is_file_backed(bufnr)
+  if vim.bo[bufnr].buftype ~= "" then
+    return false
+  end
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  return filename ~= nil and filename ~= ""
+end
+
+local function buffer_is_empty(bufnr)
+  local line_count = vim.api.nvim_buf_line_count(bufnr)
+  if line_count == 0 then
+    return true
+  end
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  for _, line in ipairs(lines) do
+    if line:match("%S") then
+      return false
+    end
+  end
+  return true
+end
+
+local function ensure_file_backed_buffer(command_name)
+  local bufnr = vim.api.nvim_get_current_buf()
+  if not buffer_is_file_backed(bufnr) then
+    local err = string.format("%s requires a file-backed buffer", command_name)
+    vim.notify(err, vim.log.levels.ERROR)
+    return nil
+  end
+  return bufnr
+end
+
+local function get_visual_selection_range()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  if not start_pos or not end_pos then
+    return nil
+  end
+  local start_line = start_pos[2]
+  local end_line = end_pos[2]
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  return { start = start_line, ["end"] = end_line }
+end
+
+local function format_prompt_label(bufnr, selection_range)
+  local components = {}
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  if filename and filename ~= "" then
+    local short = vim.fn.fnamemodify(filename, ":t")
+    table.insert(components, short)
+  end
+  if selection_range and selection_range.start and selection_range["end"] then
+    table.insert(components, string.format("%d:%d", selection_range.start, selection_range["end"]))
+  end
+
+  local label
+  if #components > 0 then
+    label = string.format("ask pi (%s)", table.concat(components, ":"))
+  else
+    label = "ask pi"
+  end
+
+  if buffer_is_empty(bufnr) then
+    label = label .. " [buffer is empty]"
+  end
+
+  return label .. ": "
+end
 
 function M.setup(opts)
   M.config = vim.tbl_extend("force", M.config, opts or {})
@@ -255,33 +329,39 @@ function M.get_buffer_context()
   local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local content = table.concat(lines, "\n")
   local filename = vim.api.nvim_buf_get_name(bufnr)
+  local has_filename = filename and filename ~= ""
 
   local context = SYSTEM_PROMPT .. "\n\n"
-  if filename and filename ~= "" then
+  if has_filename then
     context = context .. string.format("File: %s\n```\n%s\n```", filename, content)
   else
     context = context .. string.format("```\n%s\n```", content)
   end
+
+  if has_filename and buffer_is_empty(bufnr) then
+    context = context .. "\n\n" .. EMPTY_FILE_NOTE
+  end
+
   return context
 end
 
 function M.get_visual_context()
   local bufnr = vim.api.nvim_get_current_buf()
   local filename = vim.api.nvim_buf_get_name(bufnr)
+  local has_filename = filename and filename ~= ""
 
   local all_lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local all_content = table.concat(all_lines, "\n")
 
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-  local start_line = start_pos[2]
-  local end_line = end_pos[2]
+  local selection_range = get_visual_selection_range()
+  local start_line = selection_range and selection_range.start or 1
+  local end_line = selection_range and selection_range["end"] or #all_lines
 
   local selected_lines = vim.api.nvim_buf_get_lines(bufnr, start_line - 1, end_line, false)
   local selection_content = table.concat(selected_lines, "\n")
 
   local context = SYSTEM_PROMPT .. "\n\n"
-  if filename and filename ~= "" then
+  if has_filename then
     context = context
       .. string.format(
         "File: %s\n\nFull file content:\n```\n%s\n```\n\nSelected lines %d-%d:\n```\n%s\n```",
@@ -301,6 +381,11 @@ function M.get_visual_context()
         selection_content
       )
   end
+
+  if has_filename and buffer_is_empty(bufnr) then
+    context = context .. "\n\n" .. EMPTY_FILE_NOTE
+  end
+
   return context
 end
 
@@ -310,7 +395,14 @@ function M.prompt_with_buffer()
     return
   end
 
-  vim.ui.input({ prompt = "Ask pi: " }, function(input)
+  local bufnr = ensure_file_backed_buffer("PiAsk")
+  if not bufnr then
+    return
+  end
+
+  local prompt_label = format_prompt_label(bufnr, nil)
+
+  vim.ui.input({ prompt = prompt_label }, function(input)
     if input then
       local context = M.get_buffer_context()
       M.send(input, context)
@@ -324,7 +416,15 @@ function M.prompt_with_selection()
     return
   end
 
-  vim.ui.input({ prompt = "Ask pi (selection): " }, function(input)
+  local bufnr = ensure_file_backed_buffer("PiAskSelection")
+  if not bufnr then
+    return
+  end
+
+  local selection_range = get_visual_selection_range()
+  local prompt_label = format_prompt_label(bufnr, selection_range)
+
+  vim.ui.input({ prompt = prompt_label }, function(input)
     if input then
       local context = M.get_visual_context()
       M.send(input, context)

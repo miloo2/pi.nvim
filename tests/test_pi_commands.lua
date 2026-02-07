@@ -177,7 +177,7 @@ end
 -- Test PiAsk uses correct command
 local function test_pi_ask_command()
   setup_test_env()
-  setup_buffer({ "code" }, nil)
+  setup_buffer({ "code" }, "/test/file.lua")
 
   local captured = run_pi_ask("test")
   local cmd = captured.get_cmd()
@@ -186,6 +186,40 @@ local function test_pi_ask_command()
   MiniTest.expect.equality(cmd[2], "--mode")
   MiniTest.expect.equality(cmd[3], "rpc")
   MiniTest.expect.equality(cmd[4], "--no-session")
+end
+
+local function test_pi_ask_requires_file()
+  setup_test_env()
+  setup_buffer({ "code" }, nil)
+
+  child.lua([[ 
+    _G.__pi_test_notifies = {}
+    vim.notify = function(msg, level)
+      table.insert(_G.__pi_test_notifies, { msg = msg, level = level })
+    end
+    vim.ui.input = function()
+      error("vim.ui.input should not be called when the buffer has no file")
+    end
+  ]])
+
+  child.cmd("PiAsk")
+
+  local notifications = child.lua_get([[_G.__pi_test_notifies]])
+  MiniTest.expect.equality(#notifications > 0, true)
+  local last = notifications[#notifications]
+  local error_level = child.lua_get([[vim.log.levels.ERROR]])
+  MiniTest.expect.equality(last.level, error_level)
+  MiniTest.expect.equality(last.msg:match("file%-backed"), "file-backed")
+end
+
+local function test_pi_ask_empty_file_note()
+  setup_test_env()
+  setup_buffer({ "" }, "/test/new.lua")
+
+  local captured = run_pi_ask("scaffold this file")
+  local prompt = decode_prompt(captured)
+
+  MiniTest.expect.equality(prompt.message:match("NOTE: This file is currently empty"), "NOTE: This file is currently empty")
 end
 
 -- Test PiAskSelection sends user message
@@ -245,7 +279,7 @@ end
 -- Test PiAskSelection uses correct command
 local function test_pi_ask_selection_command()
   setup_test_env()
-  setup_buffer({ "code" }, nil)
+  setup_buffer({ "code" }, "/test/selection.lua")
 
   local captured = run_pi_ask_selection("test", 1, 1)
   local cmd = captured.get_cmd()
@@ -255,12 +289,46 @@ local function test_pi_ask_selection_command()
   MiniTest.expect.equality(cmd[3], "rpc")
 end
 
+local function test_pi_ask_selection_requires_file()
+  setup_test_env()
+  setup_buffer({ "code" }, nil)
+
+  child.lua([[ 
+    _G.__pi_test_notifies = {}
+    vim.notify = function(msg, level)
+      table.insert(_G.__pi_test_notifies, { msg = msg, level = level })
+    end
+    vim.ui.input = function()
+      error("vim.ui.input should not be called when the buffer has no file")
+    end
+  ]])
+
+  child.cmd("PiAskSelection")
+
+  local notifications = child.lua_get([[_G.__pi_test_notifies]])
+  MiniTest.expect.equality(#notifications > 0, true)
+  local last = notifications[#notifications]
+  local error_level = child.lua_get([[vim.log.levels.ERROR]])
+  MiniTest.expect.equality(last.level, error_level)
+  MiniTest.expect.equality(last.msg:match("PiAskSelection"), "PiAskSelection")
+end
+
+local function test_pi_ask_selection_empty_file_note()
+  setup_test_env()
+  setup_buffer({ "" }, "/test/new_selection.lua")
+
+  local captured = run_pi_ask_selection("create this file", 1, 1)
+  local prompt = decode_prompt(captured)
+
+  MiniTest.expect.equality(prompt.message:match("NOTE: This file is currently empty"), "NOTE: This file is currently empty")
+end
+
 -- Test custom provider configuration
 local function test_custom_provider()
   setup_test_env()
   child.lua([[require("pi").setup({ provider = "openai" })]])
 
-  setup_buffer({ "code" }, nil)
+  setup_buffer({ "code" }, "/test/provider.lua")
   local captured = run_pi_ask("test")
   local cmd = captured.get_cmd()
 
@@ -279,7 +347,7 @@ local function test_custom_model()
   setup_test_env()
   child.lua([[require("pi").setup({ model = "gpt-4" })]])
 
-  setup_buffer({ "code" }, nil)
+  setup_buffer({ "code" }, "/test/model.lua")
   local captured = run_pi_ask("test")
   local cmd = captured.get_cmd()
 
@@ -301,12 +369,16 @@ T["PiAsk"]["sends user message to pi"] = test_pi_ask_sends_message
 T["PiAsk"]["includes buffer context in prompt"] = test_pi_ask_includes_context
 T["PiAsk"]["includes system prompt in context"] = test_pi_ask_includes_system_prompt
 T["PiAsk"]["uses correct pi command"] = test_pi_ask_command
+T["PiAsk"]["requires file-backed buffer"] = test_pi_ask_requires_file
+T["PiAsk"]["adds note when file is empty"] = test_pi_ask_empty_file_note
 
 T["PiAskSelection"] = MiniTest.new_set()
 T["PiAskSelection"]["sends user message with selection context"] = test_pi_ask_selection_sends_message
 T["PiAskSelection"]["includes full file and selection in context"] = test_pi_ask_selection_includes_context
 T["PiAskSelection"]["includes selection content separately"] = test_pi_ask_selection_separate
 T["PiAskSelection"]["uses correct pi command"] = test_pi_ask_selection_command
+T["PiAskSelection"]["requires file-backed buffer"] = test_pi_ask_selection_requires_file
+T["PiAskSelection"]["adds note when file is empty"] = test_pi_ask_selection_empty_file_note
 
 T["Configuration"] = MiniTest.new_set()
 T["Configuration"]["uses custom provider when configured"] = test_custom_provider
