@@ -159,7 +159,7 @@ local function update_spinner(status_text)
   local spinner_char = spinner[state.spinner_idx % #spinner + 1]
   state.spinner_idx = state.spinner_idx + 1
 
-  local virt_text = { { spinner_char .. " " .. status_text, "Comment" } }
+  local virt_text = { { " " .. spinner_char .. " " .. status_text, "Comment" } }
 
   if state.extmark_id then
     pcall(vim.api.nvim_buf_del_extmark, state.buf, state.ns_id, state.extmark_id)
